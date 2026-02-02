@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34031.279
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11222.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bonsai.Gui", "src\Bonsai.Gui\Bonsai.Gui.csproj", "{B9678B9E-B8CE-4A70-B04D-E154392279E1}"
 EndProject
@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{DEE5DD87
 		build\Project.csproj.props = build\Project.csproj.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bonsai.Gui.ImGui", "src\Bonsai.Gui.ImGui\Bonsai.Gui.ImGui.csproj", "{84CCE94E-8EB0-CBCE-EEE1-C55101819341}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{FDBC57F0-B0D6-4CA3-B733-79F4421526D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDBC57F0-B0D6-4CA3-B733-79F4421526D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDBC57F0-B0D6-4CA3-B733-79F4421526D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CCE94E-8EB0-CBCE-EEE1-C55101819341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CCE94E-8EB0-CBCE-EEE1-C55101819341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CCE94E-8EB0-CBCE-EEE1-C55101819341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CCE94E-8EB0-CBCE-EEE1-C55101819341}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
