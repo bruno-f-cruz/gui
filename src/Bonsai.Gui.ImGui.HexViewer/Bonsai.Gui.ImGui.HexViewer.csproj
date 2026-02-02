@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Title>Bonsai - GUI ImGui HexViewer</Title>
+    <Description>Bonsai Library with a hexadecimal visualizer.</Description>
+    <PackageTags>$(PackageTags) ImGui Visualizers HexViewer</PackageTags>
+    <TargetFrameworks>net472</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bonsai.Gui.ImGui\Bonsai.Gui.ImGui.csproj" />
+  </ItemGroup>
+
+</Project>
