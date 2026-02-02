@@ -4,16 +4,17 @@ using System.Numerics;
 using System.Text;
 using Hexa.NET.ImGui;
 
-/// <summary>
-/// Read-only hexadecimal memory viewer widget for Dear ImGui (Hexa.NET.ImGui).
-/// Supports displaying a single byte[] or a history of byte[] snapshots with visual separators.
-/// </summary>
+
 // This is a C# port of ocornut's imgui_memory_editor.h
 // Original: https://github.com/ocornut/imgui_club
 // Licensed under The MIT License (MIT)
 
 namespace Bonsai.Gui.ImGui.HexViewer
 {
+    /// <summary>
+    /// Read-only hexadecimal memory viewer widget for Dear ImGui (Hexa.NET.ImGui).
+    /// Supports displaying a single byte[] or a history of byte[] snapshots with visual separators.
+    /// </summary>
     public class HexViewer
     {
         public HexViewer()
@@ -312,24 +313,6 @@ namespace Bonsai.Gui.ImGui.HexViewer
 
             long previewDataTypeSize = optShowDataPreview ? DataTypeGetSize(_previewDataType) : 0;
 
-            // Keyboard navigation
-            if (_selectedAddr != -1)
-            {
-                long prevAddr = _selectedAddr;
-                if (Hexa.NET.ImGui.ImGui.IsKeyPressed(ImGuiKey.UpArrow) && _selectedAddr >= columnCount)
-                    _selectedAddr -= columnCount;
-                else if (Hexa.NET.ImGui.ImGui.IsKeyPressed(ImGuiKey.DownArrow) && _selectedAddr < totalBytes - columnCount)
-                    _selectedAddr += columnCount;
-                else if (Hexa.NET.ImGui.ImGui.IsKeyPressed(ImGuiKey.LeftArrow) && _selectedAddr > 0)
-                    _selectedAddr--;
-                else if (Hexa.NET.ImGui.ImGui.IsKeyPressed(ImGuiKey.RightArrow) && _selectedAddr < totalBytes - 1)
-                    _selectedAddr++;
-                // Clamp to valid range
-                if (_selectedAddr < 0) _selectedAddr = 0;
-                if (_selectedAddr >= totalBytes) _selectedAddr = totalBytes - 1;
-                _dataPreviewAddr = _selectedAddr;
-            }
-
             // Vertical separator
             Vector2 windowPos = Hexa.NET.ImGui.ImGui.GetWindowPos();
             if (optShowAscii)
@@ -439,10 +422,12 @@ namespace Bonsai.Gui.ImGui.HexViewer
                         addr = (long)localDataLine * columnCount;
 
                         Hexa.NET.ImGui.ImGui.PushID(virtualLine);
-                        if (Hexa.NET.ImGui.ImGui.InvisibleButton("ascii", new Vector2(s.PosAsciiEnd - s.PosAsciiStart, s.LineHeight)))
+                        Vector2 asciiSize = new Vector2(s.PosAsciiEnd - s.PosAsciiStart, s.LineHeight);
+                        if (Hexa.NET.ImGui.ImGui.InvisibleButton("ascii", asciiSize))
                         {
                             long clickedLocal = addr + (long)((Hexa.NET.ImGui.ImGui.GetIO().MousePos.X - asciiPos.X) / s.GlyphWidth);
                             if (clickedLocal >= entrySize) clickedLocal = entrySize - 1;
+                            if (clickedLocal < 0) clickedLocal = 0;
                             _selectedAddr = _dataPreviewAddr = globalByteOffset + clickedLocal;
                         }
                         Hexa.NET.ImGui.ImGui.PopID();
